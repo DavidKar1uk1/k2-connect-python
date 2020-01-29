@@ -37,7 +37,7 @@ def validate_url(url):
         raise exceptions.InvalidArgumentError('The url format passed is invalid (should be : http://domain.com)')
     # if validated_url.scheme is not "" and not validated_url.scheme == 'https':
     if validated_url.scheme != "http" and validated_url.scheme != "https":
-        raise exceptions.InvalidArgumentError('Provide a url with a valid certificate => (http://)')
+        raise exceptions.InvalidArgumentError('Provide a url with a valid certificate => (http://) or (https://')
     else:
         return True
 

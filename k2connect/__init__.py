@@ -3,6 +3,9 @@ This module handles the initialization of the k2connect library.
 It takes a client id, secret and base url and initializes all k2connect
 services as with appropriate required arguments.
 """
+
+# TODO: Remember to remove http from validation
+# TODO: David-dev branch is the one that is behind use the development branch which is the updated one
 import k2connect
 
 from .authorization import TokenService
