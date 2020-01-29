@@ -11,7 +11,7 @@ from k2connect import k2_requests
 from k2connect import service
 from k2connect import validation
 
-CREATE_RECEIVE_MPESA_PAYMENT_PATH = 'payment_requests'
+CREATE_RECEIVE_MPESA_PAYMENT_PATH = 'api/v1/incoming_payments'
 
 
 class ReceivePaymentsService(service.Service):

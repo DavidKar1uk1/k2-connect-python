@@ -34,9 +34,10 @@ def validate_url(url):
     validated_url = urlparse(url)
     # check url format
     if validated_url.scheme is "" or validated_url.netloc is "":
-        raise exceptions.InvalidArgumentError('The url format passed is invalid (should be : https://domain.com)')
-    if validated_url.scheme is not "" and not validated_url.scheme == 'https':
-        raise exceptions.InvalidArgumentError('Provide a url with a valid certificate => (https://)')
+        raise exceptions.InvalidArgumentError('The url format passed is invalid (should be : http://domain.com)')
+    # if validated_url.scheme is not "" and not validated_url.scheme == 'https':
+    if validated_url.scheme != "http" and validated_url.scheme != "https":
+        raise exceptions.InvalidArgumentError('Provide a url with a valid certificate => (http://)')
     else:
         return True
 

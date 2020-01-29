@@ -9,8 +9,8 @@ from k2connect import json_builder
 from k2connect import service
 from k2connect import validation
 
-TRANSFER_PATH = 'transfers'
-SETTLEMENT_ACCOUNTS_PATH = 'merchant_bank_accounts'
+TRANSFER_PATH = 'api/v1/transfers'
+SETTLEMENT_ACCOUNTS_PATH = 'api/v1/merchant_bank_accounts'
 
 
 class TransferService(service.Service):

@@ -10,8 +10,8 @@ from k2connect import exceptions
 from k2connect import validation
 
 # PAY Service paths
-ADD_PAY_PATH = "pay_recipients"
-SEND_PAY_PATH = "payments"
+ADD_PAY_PATH = "api/v1/pay_recipients"
+SEND_PAY_PATH = "api/v1/payments"
 
 # PAY recipient types
 BANK_ACCOUNT_RECIPIENT_TYPE = "bank_account"

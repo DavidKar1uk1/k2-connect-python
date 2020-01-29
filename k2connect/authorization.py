@@ -10,7 +10,7 @@ from k2connect import service
 from k2connect import validation
 
 # path for authorization requests
-AUTHORIZATION_PATH = 'oauth/v4/token'
+AUTHORIZATION_PATH = 'oauth/token'
 
 
 class TokenService(service.Service):
@@ -68,19 +68,19 @@ class TokenService(service.Service):
 
         # define client credentials payload
         client_credentials_payload = {
+            'grant_type': 'client_credentials',
             'client_id': self._client_id,
             'client_secret': self._client_secret,
-            'grant-type': 'client-credentials',
         }
 
         # url-encode payload
         data = urlencode(client_credentials_payload)
 
         # request access token and expiry duration
-        access_token_request = self._make_requests(data=data,
-                                                   headers=headers,
+        access_token_request = self._make_requests(headers=headers,
                                                    method='POST',
-                                                   url=url)
+                                                   url=url,
+                                                   data=data)
 
         return access_token_request
 

@@ -7,7 +7,7 @@ from k2connect import json_builder
 from k2connect import service
 from k2connect import validation
 
-WEBHOOK_SUBSCRIPTION_PATH = 'webhook-subscription'
+WEBHOOK_SUBSCRIPTION_PATH = 'api/v1/webhook_subscriptions'
 
 
 class WebhookService(service.Service):
