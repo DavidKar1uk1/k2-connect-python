@@ -124,9 +124,10 @@ def webhook_decompose(decomposer, result_topic, payload_dictionary, resource_pay
     # decompose all values that are similar in BUYGOODS TRANSACTIONS
     if result_topic == BUYGOODS_TRANSACTION_RECEIVED \
             or result_topic == BUYGOODS_TRANSACTION_REVERSED:
-        decomposer.first_name = resource_payload_nest['sender_first_name']
-        # decomposer.middle_name = resource_payload_nest['sender_middle_name']
         decomposer.last_name = resource_payload_nest['sender_last_name']
+        decomposer.first_name = resource_payload_nest['sender_first_name']
+        decomposer.middle_name = resource_payload_nest['sender_middle_name']
+        decomposer.phone_number = resource_payload_nest['sender_phone_number']
 
     # decompose all values that have similar links structures
     if result_topic == BUYGOODS_TRANSACTION_REVERSED \
@@ -153,9 +154,10 @@ def webhook_decompose(decomposer, result_topic, payload_dictionary, resource_pay
 
     # decompose unique to customer created
     if result_topic == CUSTOMER_CREATED:
+        decomposer.last_name = resource_payload_nest['last_name']
         decomposer.first_name = resource_payload_nest['first_name']
         decomposer.middle_name = resource_payload_nest['middle_name']
-        decomposer.last_name = resource_payload_nest['last_name']
+        decomposer.phone_number = resource_payload_nest['phone_number']
 
     # decompose unique to settlement transfer completed
     if result_topic == SETTLEMENT_TRANSFER_COMPLETED:
@@ -163,13 +165,15 @@ def webhook_decompose(decomposer, result_topic, payload_dictionary, resource_pay
         decomposer.destination_type = destination_payload_nest['type']
         destination_resource_payload_nest = destination_payload_nest['resource']
         if decomposer.destination_type == 'merchant_bank_account':
-            decomposer.bank_id = destination_resource_payload_nest['bank_id']
-            decomposer.bank_branch_id = destination_resource_payload_nest['bank_branch_id']
             decomposer.account_name = destination_resource_payload_nest['account_name']
             decomposer.account_number = destination_resource_payload_nest['account_number']
+            decomposer.bank_branch_ref = destination_resource_payload_nest['bank_branch_ref']
         elif decomposer.destination_type == 'merchant_wallet':
-            decomposer.msisdn = destination_resource_payload_nest['msisdn']
             decomposer.network = destination_resource_payload_nest['network']
+            decomposer.reference = destination_resource_payload_nest['reference']
+            decomposer.last_name = destination_resource_payload_nest['last_name']
+            decomposer.first_name = destination_resource_payload_nest['first_name']
+            decomposer.phone_number = destination_resource_payload_nest['phone_number']
 
 
 def payment_decompose(decomposer, data_payload_nest, payments_result_type, payments_attributes_payload_nest,
